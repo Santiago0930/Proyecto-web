@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" href="/estilo.css">
+</head>
+
+<body>
+
+    <form method="get" action="#" th:action="@{/nave/buscar}">
+        <label for="searchText">Buscar por nombre</label>
+        <input type="text" id="searchText" name="searchText">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <h1>Naves</h1>
+
+    <table class="entity-list">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Dinero Total</th>
+                <th>Capacidad Bodega</th>
+                <th>Velocidad</th>
+                <th>Tiempo acumulado</th>
+                <th>Ver</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr th:each="n : ${naves}" th:if="${n.nombre}">
+                <td th:text="${n.nombre}"></td>
+                <td th:text="${n.dinero}"></td>
+                <td th:text="${n.bodega}"></td>
+                <td th:text="${n.velocidad}"></td>
+                <td th:text="${n.tiempo}"></td>
+                <td>
+                    <form th:action="@{/nave/view/{id}(id=${n.id})}">
+                        <input type="submit" value="Ver" />
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{/nave/edit-form/{id}(id=${n.id})}">
+                        <input type="submit" value="Editar" />
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{/nave/eliminar/{id}(id=${n.id})}" method="post">
+                        <input type="submit" value="Eliminar" />
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/nave/list}">Volver</a>
+
+</body>
+
+</html>

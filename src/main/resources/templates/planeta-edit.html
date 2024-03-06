@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" href="/estilo.css">
+</head>
+
+<body>
+    <div class="formcontainer">
+        <h1>Editar planeta</h1>
+        <form action="#" th:action="@{/planeta/save}" th:object="${planeta}" method="post">
+            <input type="hidden" th:field="*{id}" id="id">
+            <label for="nombrePlaneta">Nombre: </label>
+            <input type="text" th:field="*{nombre}" id="nombrePlaneta">
+            <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"
+                th:class="${#fields.hasErrors('nombre')} ? 'error' : ''"></span>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <a th:href="@{/planeta/list}">Cancelar</a>
+</body>
+
+</html>

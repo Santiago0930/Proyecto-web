@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" href="/estilo.css">
+</head>
+
+<body>
+    <div class="formcontainer">
+        <h1>Editar producto</h1>
+        <form action="#" th:action="@{/producto/save}" th:object="${producto}" method="post">
+            <input type="hidden" th:field="*{id}" id="id">
+            <label for="nombreProducto">Nombre: </label>
+            <input type="text" th:field="*{nombre}" id="nombreProducto">
+            <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"
+                th:class="${#fields.hasErrors('nombre')} ? 'error' : ''"></span>
+            <label for="precioUnitarioCompras">Precio Unitario Compra: </label>
+            <input type="text" th:field="*{precioUnitarioCompra}" id="precioUnitarioCompras">
+            <span th:if="${#fields.hasErrors('precioUnitarioCompra')}" th:errors="*{precioUnitarioCompra}"
+                th:class="${#fields.hasErrors('precioUnitarioCompra')} ? 'error' : ''"></span>
+            <label for="precioUnitarioVentas">Precio Unitario Venta: </label>
+            <input type="text" th:field="*{precioUnitarioVenta}" id="precioUnitarioVentas">
+            <span th:if="${#fields.hasErrors('precioUnitarioVenta')}" th:errors="*{precioUnitarioVenta}"
+                th:class="${#fields.hasErrors('precioUnitarioVenta')} ? 'error' : ''"></span>
+            <label for="stockActual">Stock: </label>
+            <input type="text" th:field="*{stock}" id="stockActual">
+            <span th:if="${#fields.hasErrors('stock')}" th:errors="*{stock}"
+                th:class="${#fields.hasErrors('stock')} ? 'error' : ''"></span>
+            <label for="volumenProducto">Volumen: </label>
+            <input type="text" th:field="*{volumen}" id="volumenProducto">
+            <span th:if="${#fields.hasErrors('volumen')}" th:errors="*{volumen}"
+                th:class="${#fields.hasErrors('volumen')} ? 'error' : ''"></span>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <a th:href="@{/producto/list}">Cancelar</a>
+</body>
+
+</html>

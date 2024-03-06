@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" href="/estilo.css">
+
+</head>
+
+<body>
+    <h1>Tripulante</h1>
+    <p th:text="|Usuario: ${tripulante.usuario}|"></p>
+    <p th:text="|Contraseña: ${tripulante.contrasenia}|"></p>
+    <p th:text="|Rol: ${tripulante.rol}|"></p>
+    <a th:href="@{/tripulante/list}">Volver</a>
+</body>
+
+</html>
