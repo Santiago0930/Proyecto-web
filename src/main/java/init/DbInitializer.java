@@ -125,16 +125,6 @@ public class DbInitializer implements CommandLineRunner {
 }
 
 
-
-
-
-
-
-
-
-
-
-
 /*Tripulante t1 = new Tripulante("Alice", "ali123", "Jefe");
         Tripulante t2 = new Tripulante("Camila", "ali123", "Jefe");
         tripulanteRepository.save(t1);
