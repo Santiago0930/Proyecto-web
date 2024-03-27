@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" href="/estilo.css">
+</head>
+
+<body>
+    <div th:insert="fragments/menu.html :: menuPrincipal"></div>
+
+    <h1>Estrellas</h1>
+    <a th:href="@{/estrella/buscar}">Buscar</a>
+    <a th:href="@{/estrella/create-form}">Crear</a>
+
+    <table class="entity-list">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Estado</th>
+                <th>Coordenada x</th>
+                <th>Coordenada y</th>
+                <th>Coordenada z</th>
+                <th>Ver</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr th:each="e : ${estrellas}" th:if="${e.nombre}">
+                <td th:text="${e.nombre}"></td>
+                <td th:text="${e.estado}"></td>
+                <td th:text="${e.x}"></td>
+                <td th:text="${e.y}"></td>
+                <td th:text="${e.z}"></td>
+                <td>
+                    <form th:action="@{/estrella/view/{id}(id=${e.id})}">
+                        <input type="submit" value="Ver" />
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{/estrella/edit-form/{id}(id=${e.id})}">
+                        <input type="submit" value="Editar" />
+                    </form>
+                </td>
+                <td>
+                    <form th:action="@{/estrella/eliminar/{id}(id=${e.id})}" method="post">
+                        <input type="submit" value="Eliminar" />
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+
+</html>

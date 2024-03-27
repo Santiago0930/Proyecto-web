@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" href="/estilo.css">
+</head>
+
+<body>
+    <div class="formcontainer">
+        <h1>Crear Tripulante</h1>
+        <form action="#" th:action="@{/tripulante/save}" th:object="${tripulante}" method="post">
+            <input type="hidden" th:field="*{id}" id="id">
+            <label for="usuarioT">Usuario: </label>
+            <input type="text" th:field="*{usuario}" id="usuarioT">
+            <span th:if="${#fields.hasErrors('usuario')}" th:errors="*{usuario}"
+                th:class="${#fields.hasErrors('usuario')} ? 'error' : ''"></span>
+            <label for="contraseña">Contraseña: </label>
+            <input type="text" th:field="*{contrasenia}" id="contraseña">
+            <span th:if="${#fields.hasErrors('contrasenia')}" th:errors="*{contrasenia}"
+                th:class="${#fields.hasErrors('contrasenia')} ? 'error' : ''"></span>
+            <label for="rolT">Rol: </label>
+            <input type="text" th:field="*{rol}" id="rolT">
+            <span th:if="${#fields.hasErrors('rol')}" th:errors="*{rol}"
+                th:class="${#fields.hasErrors('rol')} ? 'error' : ''"></span>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <a th:href="@{/tripulante/list}">Cancelar</a>
+</body>
+
+</html>
