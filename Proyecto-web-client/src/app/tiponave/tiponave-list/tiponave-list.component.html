@@ -1,0 +1,23 @@
+<div>
+    <h3>Escribe un tiempo de juego en años luz</h3>
+    <input type="number" [(ngModel)]="tiempo" [disabled]="campoDeshabilitado" placeholder="Digite un número">
+    <button (click)="actualizarTiempo(tiempo)" >Actualizar</button>
+    <h3>Selecciona una Nave</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Bodega</th>
+                <th>Velocidad</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let tiponave of tiponaves">
+                <td>{{tiponave.nombre}}</td>
+                <td>{{tiponave.bodega}}</td>
+                <td>{{tiponave.velocidad}}</td>
+                <td><button [routerLink]="['/tipoNave/view', tiponave.id]">Seleccionar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" href="/estilo.css">
+</head>
+
+<body>
+
+    <form method="get" action="#" th:action="@{/bodega/buscar}">
+        <label for="searchText">Buscar por nombre</label>
+        <input type="text" id="searchText" name="searchText">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <h1>Bodega</h1>
+
+    <table class="entity-list">
+        <thead>
+            <tr>
+                <th>Nombre Producto</th>
+                <th>Nombre Nave</th>
+                <th>Stock</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr th:each="s : ${stocks}" th:if="${s.productoB.nombre}">
+                <td th:text="${s.productoB.nombre}"></td>
+                <td th:text="${s.naveB?.tipoNave?.nombre}"></td>
+                <td th:text="${s.stock}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

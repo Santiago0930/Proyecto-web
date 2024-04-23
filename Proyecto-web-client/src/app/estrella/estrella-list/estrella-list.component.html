@@ -1,0 +1,25 @@
+<div>
+    <h2>Lista de estrellas mas cercanas</h2>
+    <h3>Selecciona una estrella a la cual quieras viajar</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre estrella</th>
+                <th>Coordenada x</th>
+                <th>Coordenada y</th>
+                <th>Coordenada z</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let estrella of estrellas">
+                <td>{{estrella.nombre}}</td>
+                <td>{{estrella.x}}</td>
+                <td>{{estrella.y}}</td>
+                <td>{{estrella.z}}</td>
+                <td>{{estrella.estado ? 'Habitado': 'No habitado'}}</td>
+                <td><button (click)="actualizarTiempoYcoordenadas(estrella)" [routerLink]=getRouterLink(estrella)>Viajar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

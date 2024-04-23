@@ -1,0 +1,34 @@
+<div>
+    <h3>Lista de productos para comprar o vender</h3>
+    <h3>Selecciona uno</h3>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre Producto</th>
+                    <th>Volumen</th>
+                    <th>Stock planeta</th>
+                    <th>Factor Oferta</th>
+                    <th>Factor Demanda</th>
+                    <th>P.U.V</th>
+                    <th>P.U.C</th>
+                    <th>Stock nave</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let producto of productos; let i = index">
+                    <td>{{ producto?.nombre }}</td>
+                    <td>{{ producto?.volumen }}</td>
+                    <td>{{ PxP[i].stock }}</td>
+                    <td>{{ PxP[i].factorOferta }}</td>
+                    <td>{{ PxP[i].factorDemanda }}</td>
+                    <td>{{ precioVenta[i] }}</td>
+                    <td>{{ precioCompra[i] }}</td>
+                    <td>{{ bodega[i].stock }}</td>
+                    <td> <button [routerLink]="['/producto/view/',producto.id]">Seleccionar</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

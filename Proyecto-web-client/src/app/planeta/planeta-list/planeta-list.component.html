@@ -1,0 +1,17 @@
+<div>
+    <h2>Lista de planetas</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre Planeta</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let planeta of planetas">
+                <td>{{planeta.nombre}}</td>
+                <td><button (click)="actualizarIdPlaneta(planeta.id)" [routerLink]="['/PxP/list/',planeta.id]">Comerciar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

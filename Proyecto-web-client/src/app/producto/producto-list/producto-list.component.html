@@ -1,0 +1,25 @@
+<div>
+    <h2>Informacion Producto</h2>
+    <ul>
+        <li>Nombre Producto: {{producto.nombre}}</li>
+        <li>Volumen: {{producto.volumen}}</li>
+        <li>Stock planeta: {{PxP.stock}}</li>
+        <li>Factor oferta: {{PxP.factorOferta}}</li>
+        <li>Factor demanda: {{PxP.factorDemanda}}</li>
+        <li>Stock en nave: {{bodega.stock}}</li>
+        {{asignarPrecio(PxP.factorOferta,PxP.factorDemanda,bodega.stock)}}
+        <li>Precio Unitario de venta: {{precioUnitarioVenta}}</li>
+        <li>Precio Unitario de compra: {{precioUnitarioCompra}}</li>
+        <li>Dinero Actual: {{dinero}}</li>
+    </ul>
+    <h3>Digite la cantidad</h3>
+    <input type="number" [(ngModel)]="cantidad" [disabled]="campoDeshabilitado" placeholder="Digite un número">
+    <button (click)="actualizarCantidad(cantidad)">Digitar</button>
+    <div *ngIf="isVisible">
+        <h2>Precios totales</h2>
+        <ul>
+            <li>Precio total compra: {{precioFinalCompra}} <button (click)="actualizarDatosCompra(producto.volumen)" [routerLink]="['/tipoNave/view', idNave]">Comprar</button></li>
+            <li>Precio total venta: {{precioFinalVenta}} <button (click)="actualizarDatosVenta(producto.volumen)" [routerLink]="['/tipoNave/view', idNave]">Vender</button></li>
+        </ul>
+    </div>
+</div>
