@@ -12,7 +12,7 @@
         <li>Precio Unitario de compra: {{precioUnitarioCompra}}</li>
         <li>Dinero Actual: {{dinero}}</li>
     </ul>
-    <h3>Digite la cantidad</h3>
+    <h3>Digite la cantidad que desea comprar o vender</h3>
     <input type="number" [(ngModel)]="cantidad" [disabled]="campoDeshabilitado" placeholder="Digite un número">
     <button (click)="actualizarCantidad(cantidad)">Digitar</button>
     <div *ngIf="isVisible">

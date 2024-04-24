@@ -32,12 +32,12 @@ export class PlanetaxProductoListComponent {
   @Input()
    set id(id: number) {
     console.log("id", id)
+    this.naveService.getIdNave().subscribe(id => this.idNave = id)
+    this.bodegaService.listarStocks(this.idNave).subscribe(Bodega => this.bodega = Bodega)
     this.planetaXproductoService.listarPxP(id).subscribe(planeta => this.PxP = planeta)
     this.planetaXproductoService.precioUnitarioCompra(id).subscribe(precio => this.precioCompra = precio)
     this.planetaXproductoService.precioUnitarioVenta(id).subscribe(precio => this.precioVenta = precio)
     this.productoService.listarProductos().subscribe(producto => this.productos = producto)
-    this.naveService.getIdNave().subscribe(id => this.idNave = id)
-    this.bodegaService.listarStocks(this.idNave).subscribe(Bodega => this.bodega = Bodega)
    }
 
 }
