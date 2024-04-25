@@ -20,12 +20,12 @@
                 <tr *ngFor="let producto of productos; let i = index">
                     <td>{{ producto?.nombre }}</td>
                     <td>{{ producto?.volumen }}</td>
-                    <td>{{ PxP[i].stock }}</td>
-                    <td>{{ PxP[i].factorOferta }}</td>
-                    <td>{{ PxP[i].factorDemanda }}</td>
+                    <td *ngIf="PxP[i]">{{ PxP[i].stock }}</td>
+                    <td *ngIf="PxP[i]">{{ PxP[i].factorOferta }}</td>
+                    <td *ngIf="PxP[i]">{{ PxP[i].factorDemanda }}</td>
                     <td>{{ precioVenta[i] }}</td>
                     <td>{{ precioCompra[i] }}</td>
-                    <td>{{ bodega[i].stock }}</td>
+                    <td *ngIf="bodega[i]">{{ bodega[i].stock }}</td>
                     <td> <button [routerLink]="['/producto/view/',producto.id]">Seleccionar</button></td>
                 </tr>
             </tbody>
