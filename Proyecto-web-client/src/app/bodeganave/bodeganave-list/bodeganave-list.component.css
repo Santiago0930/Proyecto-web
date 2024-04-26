@@ -1,0 +1,37 @@
+/* Estilo general del componente */
+:host {
+    display: block;
+    margin: 20px;
+  }
+  
+  /* Estilo del título */
+  h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilo de la lista de bodegas */
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* Estilo de cada elemento de la lista */
+  li {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  
+  /* Estilo de enlaces dentro de cada elemento de la lista */
+  li a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  /* Estilo de enlaces al pasar el ratón por encima */
+  li a:hover {
+    text-decoration: underline;
+  }
+  

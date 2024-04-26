@@ -1,0 +1,72 @@
+/* Estilo general del componente */
+:host {
+    display: block;
+    margin: 20px;
+  }
+  
+  /* Estilo de los títulos */
+  h2, h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  /* Estilo de la lista de información */
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  /* Estilo de los elementos de la lista */
+  li {
+    margin-bottom: 5px;
+  }
+  
+  /* Estilo del botón */
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  /* Estilo del botón al pasar el ratón por encima */
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estilo del campo de entrada numérica */
+  input[type="number"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Estilo del botón 'Digitar' */
+  button[type="submit"] {
+    background-color: #28a745;
+  }
+  
+  /* Estilo del botón 'Digitar' al pasar el ratón por encima */
+  button[type="submit"]:hover {
+    background-color: #218838;
+  }
+  
+  /* Estilo del contenedor de los precios totales */
+  .price-container {
+    margin-top: 20px;
+  }
+  
+  /* Estilo de los precios totales */
+  .price {
+    font-weight: bold;
+  }
+  
+  /* Estilo del enlace en los botones de 'Comprar' y 'Vender' */
+  button[type="button"][routerLink], button[type="button"][routerLink]:hover {
+    text-decoration: none;
+    color: #fff;
+  }
+  

@@ -8,7 +8,7 @@ import { Console } from 'console';
 @Component({
   selector: 'app-estrella-list',
   templateUrl: './estrella-list.component.html',
-  styleUrl: './estrella-list.component.css'
+  styleUrls: ['./estrella-list.component.css'] // Corregido a styleUrls
 })
 export class EstrellaListComponent {
 

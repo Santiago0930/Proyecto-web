@@ -1,0 +1,23 @@
+/* Estilo general del componente */
+:host {
+    display: block;
+    text-align: center;
+  }
+  
+  /* Estilo del título */
+  h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  
+  /* Estilo del contenido dentro del componente */
+  div {
+    margin: 0 auto;
+    max-width: 800px;
+  }
+  
+  /* Estilo de los elementos anidados */
+  router-outlet {
+    margin-top: 20px;
+  }
+  
