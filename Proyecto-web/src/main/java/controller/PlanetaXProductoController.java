@@ -38,9 +38,6 @@ public class PlanetaXProductoController {
     @Autowired
     private PlanetaXProductoService pxpService;
 
-    /*@Autowired
-    private ProductoService productoService;*/
-
     @GetMapping("/list/{idPlaneta}")
     public List<PlanetaXProducto> listarPxP(@PathVariable Long idPlaneta) {
         return pxpService.listarPxP(idPlaneta);
@@ -66,61 +63,5 @@ public class PlanetaXProductoController {
         Object respuesta = pxpService.modificarStock(idPlaneta, idProducto, stockNuevo);
         return ResponseEntity.ok().body(respuesta);
     }
-
-
-    /*@GetMapping("/view/{idPxP}")
-    String verPxP(Model model, @PathVariable("idPxP") Long id) {
-        PlanetaXProducto datospxp = pxpService.recuperarPxP(id);
-        model.addAttribute("datospxp", datospxp);
-        return "pxp-view";
-    }
-
-    @GetMapping("/edit-form/{id}")
-    public String formularioEditarPxP(Model model, @PathVariable Long id) {
-        PlanetaXProducto datospxp = pxpService.recuperarPxP(id);
-        model.addAttribute("datospxp", datospxp);
-        return "pxp-edit";
-    }
-
-    @PostMapping(value = "/save")
-    public String guardarPxP(@Valid PlanetaXProducto pxp, BindingResult result, Model model) {
-        if (result.hasErrors()) {
-            return "pxp-edit";
-        }
-        pxpService.guardarPxP(pxp);
-        return "redirect:/PxP/list";
-    }
-
-    @GetMapping("/buscar")
-    public String listPxP(@RequestParam(required = false) String searchText, Model model) {
-        List<PlanetaXProducto> pxp;
-        if (searchText == null || searchText.trim().isEmpty()) {
-            log.info("No hay texto de búsqueda. Retornando todo");
-            pxp = pxpService.listarPxP();
-        } else {
-            log.info("Buscando productos cuyo nombre comienza con {}", searchText);
-            List<Producto> productos = productoService.buscarPorNombre(searchText);
-            if (!productos.isEmpty()) {
-                List<Long> idsProductos = productos.stream().map(Producto::getId).collect(Collectors.toList());
-                pxp = pxpService.listarPxPPorIdsProductos(idsProductos);
-            } else {
-                pxp = new ArrayList<>();
-            }
-        }
-        model.addAttribute("pxp", pxp);
-        return "pxp-buscar";
-    }
-
-    @GetMapping("/create-form")
-    public String mostrarFormularioCreacionPxP(Model model) {
-    model.addAttribute("pxp", new PlanetaXProducto());
-    return "pxp-añadir";
-    }
-
-    @PostMapping("/eliminar/{id}")
-    public String eliminarPxP(@PathVariable("id") Long id) {
-    pxpService.eliminarPxP(id);
-    return "redirect:/pxp/list";
-    }*/
 
 }

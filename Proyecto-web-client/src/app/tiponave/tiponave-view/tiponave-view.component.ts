@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { TipoNave } from '../../model/tipo-nave';
 import { Nave } from '../../model/nave';
 import { TipoNaveService } from '../../shared/tipo-nave.service';
-import { TiempoService } from '../../shared/tiempo.service';
+import { SistemaService } from '../../shared/sistema.service';
 import { CargaService } from '../../shared/carga.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class TiponaveViewComponent {
 
   constructor(
     private tipoNaveService: TipoNaveService, 
-    private tiempoService: TiempoService,
+    private sistemaService: SistemaService,
     private cargaService: CargaService,
   ) {
   }
@@ -28,7 +28,7 @@ export class TiponaveViewComponent {
     this.tipoNaveService.buscarTipoNave(id).subscribe(tiponave => this.tipoNave = tiponave);
     this.tipoNaveService.buscarNave(id).subscribe(nave => this.nave = nave);
     this.tipoNaveService.obtenerDinero(id).subscribe(din => this.dinero = din);
-    this.tiempoService.getTiempo().subscribe(time => this.tiempo = time );
+    this.sistemaService.obtenerTiempo().subscribe(time => this.tiempo = time );
     this.cargaService.getCarga().subscribe(cargas => this.carga = cargas);
   }
 

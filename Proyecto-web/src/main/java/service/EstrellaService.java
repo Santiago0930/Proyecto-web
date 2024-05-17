@@ -9,6 +9,8 @@ import co.edu.javeriana.proyecto_web.repository.NaveComRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class EstrellaService {
     @Autowired
@@ -17,6 +19,7 @@ public class EstrellaService {
     @Autowired
     private NaveComRepository naveRepository;
 
+    @Transactional
     public List<Estrella> listarEstrellas(Long id) {
         NaveComerciante nave = naveRepository.findById(id).orElseThrow();
         List<Estrella> estrellas = estrellaRepository.findAll();
@@ -40,21 +43,5 @@ public class EstrellaService {
     private double calcularDistancia(Estrella estrella, double x, double y, double z) {
         return Math.sqrt(Math.pow(estrella.getX() - x, 2) + Math.pow(estrella.getY() - y, 2) + Math.pow(estrella.getZ() - z, 2));
     }
-
-   /* public Estrella recuperarEstrella(Long id) {
-        return estrellaRepository.findById(id).orElseThrow();
-    }
-
-    public void guardarEstrella(Estrella estrella) {
-        estrellaRepository.save(estrella);
-    }
-
-    public List<Estrella> buscarPorNombre(String textoBusqueda) {
-        return estrellaRepository.findAllByNombre(textoBusqueda);
-    }
-
-    public void eliminarEstrella(Long id) {
-        estrellaRepository.deleteById(id);
-    }*/
     
 }

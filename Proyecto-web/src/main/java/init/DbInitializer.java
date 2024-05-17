@@ -9,9 +9,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.apache.commons.lang3.tuple.Pair;
+import jakarta.transaction.Transactional;
 
 import co.edu.javeriana.proyecto_web.model.Tripulante;
 import co.edu.javeriana.proyecto_web.repository.TripulanteRepository;
+import co.edu.javeriana.proyecto_web.model.Sistema;
+import co.edu.javeriana.proyecto_web.repository.SistemaRepository;
 import co.edu.javeriana.proyecto_web.model.NaveComerciante;
 import co.edu.javeriana.proyecto_web.repository.NaveComRepository;
 import co.edu.javeriana.proyecto_web.model.Producto;
@@ -28,14 +31,18 @@ import co.edu.javeriana.proyecto_web.model.BodegaNave;
 import co.edu.javeriana.proyecto_web.repository.BodegaNaveRepository;
 import co.edu.javeriana.proyecto_web.model.AgujeroGusano;
 import co.edu.javeriana.proyecto_web.repository.AgujeroGusanoRepository;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 
-@Component
+@Configuration
+@Profile({"default"})
 public class DbInitializer implements CommandLineRunner {
-
-    Map<AgujeroGusano, List<AgujeroGusano>> bla;
 
     @Autowired
     private TripulanteRepository tripulanteRepository;
+
+    @Autowired
+    private SistemaRepository sistemaRepository;
 
     @Autowired
     private NaveComRepository naveComRepository;
@@ -62,6 +69,7 @@ public class DbInitializer implements CommandLineRunner {
     private AgujeroGusanoRepository agujeroGusanoRepository;
 
     @Override
+    @Transactional
     public void run(String... args) throws Exception {
         generarEstrellas(400);
         distribuirJugadoresEnEquipos(200, 20);
@@ -69,6 +77,7 @@ public class DbInitializer implements CommandLineRunner {
         generarEspecificacionesProductos(500);
         generarRelacionNaveXEstrella();
         generarAgujerosDeGusano();
+        generarTiempoPartida();
     }
 
     private void generarEstrellas(int cantidad) {
@@ -276,5 +285,12 @@ public class DbInitializer implements CommandLineRunner {
             conexionesExistentes.add(new ImmutablePair<>(ultimo.getId(), primero.getId()));
             conexionesExistentes.add(new ImmutablePair<>(primero.getId(), ultimo.getId()));
         }
+    }
+
+    private void generarTiempoPartida() {
+        Random rand = new Random();
+        Long tiempo = rand.nextLong(1000);
+        Sistema sistema = new Sistema(tiempo);
+        sistemaRepository.save(sistema);
     }
 }

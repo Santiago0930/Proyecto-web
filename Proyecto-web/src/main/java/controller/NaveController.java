@@ -35,11 +35,6 @@ public class NaveController {
     @Autowired
     private NaveService naveService;
 
-    /*@GetMapping("/list")
-    public List<TipoNave> listarNaves() {
-        return naveService.listarTipos();
-    }
-*/
     @Operation(summary = "Buscar tipo nave por ID")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Encontró la nave", content = {

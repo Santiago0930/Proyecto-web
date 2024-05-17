@@ -1,7 +1,6 @@
 <div>
-    <h3>Escribe un tiempo de juego en años luz</h3>
-    <input type="number" [(ngModel)]="tiempo" [disabled]="campoDeshabilitado" placeholder="Digite un número">
-    <button (click)="actualizarTiempo(tiempo)" >Actualizar</button>
+    <h3>El tiempo de juego en años luz de esta partida es: {{ tiempo }}</h3>
+    <p>{{ tiempo }}</p>
     <h3>Selecciona una Nave</h3>
     <table>
         <thead>

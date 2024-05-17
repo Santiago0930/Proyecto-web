@@ -8,15 +8,19 @@ import co.edu.javeriana.proyecto_web.repository.PlanetaXProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class PlanetaXProductoService {
     @Autowired
     private PlanetaXProductoRepository planetaXProductoRepository;
 
+    @Transactional
     public List<PlanetaXProducto> listarPxP(Long idPlaneta) {
         return planetaXProductoRepository.obtenerPxP(idPlaneta);
     }
 
+    @Transactional
     public List<Integer> listarPrecioVenta(Long idPlaneta) {
         List<PlanetaXProducto> PxP =  planetaXProductoRepository.obtenerPxP(idPlaneta);
         List<Integer> listPreciosVenta = new ArrayList<>();
@@ -27,6 +31,7 @@ public class PlanetaXProductoService {
         return listPreciosVenta;
     }
 
+    @Transactional
     public List<Integer> listarPrecioCompra(Long idPlaneta) {
         List<PlanetaXProducto> PxP =  planetaXProductoRepository.obtenerPxP(idPlaneta);
         List<Integer> listPreciosCompra = new ArrayList<>();
@@ -37,28 +42,14 @@ public class PlanetaXProductoService {
         return listPreciosCompra;
     }
 
+    @Transactional
     public PlanetaXProducto obtenerpxp(Long idPlaneta, Long idProducto){
         return planetaXProductoRepository.obtenerpxp(idPlaneta, idProducto);
     }
 
+    @Transactional
     public int modificarStock(Long idPlaneta, Long idProducto, int stockNuevo ){
         return planetaXProductoRepository.modificarStock(idPlaneta, idProducto, stockNuevo);
     }
-
-    /*public PlanetaXProducto recuperarPxP(Long id) {
-        return planetaXProductoRepository.findById(id).orElseThrow();
-    }
-
-    public void guardarPxP(PlanetaXProducto PxP) {
-        planetaXProductoRepository.save(PxP);
-    }
-
-    public void eliminarPxP(Long id) {
-        planetaXProductoRepository.deleteById(id);
-    }
-
-    public List<PlanetaXProducto> listarPxPPorIdsProductos(List<Long> idsProductos) {
-        return planetaXProductoRepository.findByProductoIdIn(idsProductos);
-    }*/
 
 }

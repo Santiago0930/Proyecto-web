@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { TipoNave } from '../../model/tipo-nave';
 import { TipoNaveService } from '../../shared/tipo-nave.service';
-import { TiempoService } from '../../shared/tiempo.service';
+import { SistemaService } from '../../shared/sistema.service';
 
 @Component({
   selector: 'app-tiponave-list',
@@ -16,15 +16,12 @@ export class TiponaveListComponent {
 
   constructor(
     private tipoNaveService: TipoNaveService,
-    private tiempoService: TiempoService
+    private sistemaService: SistemaService,
   ) { }
 
   ngOnInit(): void {
     this.tipoNaveService.listarTipoNaves().subscribe(tipoNaves => this.tiponaves = tipoNaves)
+    this.sistemaService.obtenerTiempo().subscribe(time => this.tiempo = time)
   }  
 
-  actualizarTiempo(newValue: number) {
-    this.tiempoService.setTiempo(newValue);
-    this.campoDeshabilitado = true; 
-  }
 }
