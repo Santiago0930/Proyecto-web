@@ -3,7 +3,6 @@ package co.edu.javeriana.proyecto_web.service;
 import java.util.List;
 
 import co.edu.javeriana.proyecto_web.model.TipoNave;
-import co.edu.javeriana.proyecto_web.model.NaveComerciante;
 import co.edu.javeriana.proyecto_web.repository.TipoNaveRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

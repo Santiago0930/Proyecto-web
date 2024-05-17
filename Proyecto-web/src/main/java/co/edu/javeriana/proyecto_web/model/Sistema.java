@@ -1,8 +1,6 @@
 package co.edu.javeriana.proyecto_web.model;
-import java.util.*;
 
 import jakarta.persistence.*;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Sistema {

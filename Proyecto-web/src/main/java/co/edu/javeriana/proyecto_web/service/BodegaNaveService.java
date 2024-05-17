@@ -4,8 +4,6 @@ import java.util.List;
 
 import co.edu.javeriana.proyecto_web.model.BodegaNave;
 import co.edu.javeriana.proyecto_web.repository.BodegaNaveRepository;
-import co.edu.javeriana.proyecto_web.model.NaveComerciante;
-import co.edu.javeriana.proyecto_web.model.Producto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

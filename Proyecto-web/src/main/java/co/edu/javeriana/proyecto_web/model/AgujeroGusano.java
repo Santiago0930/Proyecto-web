@@ -1,5 +1,4 @@
 package co.edu.javeriana.proyecto_web.model;
-import java.util.*; 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.*;

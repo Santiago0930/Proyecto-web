@@ -1,7 +1,5 @@
 package co.edu.javeriana.proyecto_web.service;
 
-import java.util.List;
-
 import co.edu.javeriana.proyecto_web.model.Sistema;
 import co.edu.javeriana.proyecto_web.repository.SistemaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
