@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule} from '@angular/platform-browser';
 
-import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
@@ -12,6 +12,8 @@ import { PlanetaListComponent } from './planeta/planeta-list/planeta-list.compon
 import { PlanetaxProductoListComponent } from './planetaxproducto/planetax-producto-list/planetax-producto-list.component';
 import { ProductoListComponent } from './producto/producto-list/producto-list.component';
 import { BodeganaveListComponent } from './bodeganave/bodeganave-list/bodeganave-list.component';
+import { LoginComponent } from './security/login/login.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { BodeganaveListComponent } from './bodeganave/bodeganave-list/bodeganave
     PlanetaxProductoListComponent,
     ProductoListComponent,
     BodeganaveListComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,7 @@ import { BodeganaveListComponent } from './bodeganave/bodeganave-list/bodeganave
     HttpClientModule,
     FormsModule,
   ],
-  providers: [provideHttpClient(withFetch())],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

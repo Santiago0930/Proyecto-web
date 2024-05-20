@@ -22,11 +22,11 @@ export class TipoNaveService {
   )
 
   listarTipoNaves(): Observable<TipoNave[]> {
-    return this.http.get<TipoNave[]>(`${environment.serverUrl}/api/tipoNave/list`)
+    return this.http.get<TipoNave[]>(`${environment.serverUrl}/tipoNave/list`)
   }
 
   buscarTipoNave(id: number): Observable<TipoNave> {
-    return this.http.get<TipoNave>(`${environment.serverUrl}/api/tipoNave/${id}`)
+    return this.http.get<TipoNave>(`${environment.serverUrl}/tipoNave/${id}`)
   }
 
   buscarNave(id: number): Observable<Nave> {

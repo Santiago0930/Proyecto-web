@@ -12,6 +12,9 @@ import jakarta.transaction.Transactional;
 
 import co.edu.javeriana.proyecto_web.model.Tripulante;
 import co.edu.javeriana.proyecto_web.repository.TripulanteRepository;
+import co.edu.javeriana.proyecto_web.model.Role;
+import co.edu.javeriana.proyecto_web.model.User;
+import co.edu.javeriana.proyecto_web.repository.UserRepository;
 import co.edu.javeriana.proyecto_web.model.Sistema;
 import co.edu.javeriana.proyecto_web.repository.SistemaRepository;
 import co.edu.javeriana.proyecto_web.model.NaveComerciante;
@@ -32,6 +35,7 @@ import co.edu.javeriana.proyecto_web.model.AgujeroGusano;
 import co.edu.javeriana.proyecto_web.repository.AgujeroGusanoRepository;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @Profile({"default"})
@@ -67,9 +71,18 @@ public class DbInitializer implements CommandLineRunner {
     @Autowired
     private AgujeroGusanoRepository agujeroGusanoRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     @Override
     @Transactional
     public void run(String... args) throws Exception {
+        userRepository.save(new User("Alice", "Alisson", "alice@alice.com", passwordEncoder.encode("alice123"), Role.CAPITAN));
+        userRepository.save(new User("Bob", "Bobson", "bob@bob.com", passwordEncoder.encode("bob123"), Role.COMERCIANTE));
+        userRepository.save(new User("Santi", "Guerre", "san@san.com", passwordEncoder.encode("san123"), Role.PILOTO));
         generarEstrellas(400);
         distribuirJugadoresEnEquipos(200, 20);
         generarNaves(20);

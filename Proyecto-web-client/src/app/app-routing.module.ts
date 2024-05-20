@@ -7,8 +7,10 @@ import { PlanetaListComponent } from './planeta/planeta-list/planeta-list.compon
 import { PlanetaxProductoListComponent } from './planetaxproducto/planetax-producto-list/planetax-producto-list.component';
 import { ProductoListComponent } from './producto/producto-list/producto-list.component';
 import { BodeganaveListComponent } from './bodeganave/bodeganave-list/bodeganave-list.component';
+import { LoginComponent } from './security/login/login.component';
 
 const routes: Routes = [
+  { path: 'login', component: LoginComponent },
   { path: 'tipoNave/view/:id', component: TiponaveViewComponent},
   { path: 'tipoNave/list', component: TiponaveListComponent},
   { path: 'estrella/list/cercanas/:id', component: EstrellaListComponent},
@@ -17,7 +19,7 @@ const routes: Routes = [
   { path: 'producto/list/', component: PlanetaxProductoListComponent},
   { path: 'bodeganave/list/:id', component: BodeganaveListComponent},
   { path: 'producto/view/:id', component: ProductoListComponent},
-  { path: '', pathMatch: 'full', redirectTo: 'tipoNave/list' },
+  { path: '', pathMatch: 'full', redirectTo: 'login' },
 ];
 
 @NgModule({

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Sistema } from '../model/sistema';
 import { environment } from '../environments/environment.development';
 import { Observable } from 'rxjs';
 
@@ -19,7 +18,7 @@ export class SistemaService {
   )
 
   obtenerTiempo(): Observable<number> {
-    return this.http.get<number>(`${environment.serverUrl}/api/sistema/obtener`)
+    return this.http.get<number>(`${environment.serverUrl}/sistema/obtener`)
   }
   
 }
