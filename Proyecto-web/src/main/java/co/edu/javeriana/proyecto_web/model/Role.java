@@ -1,7 +1,7 @@
 package co.edu.javeriana.proyecto_web.model;
 
 public enum Role {
-    COMERCIANTE,
+    CAPITAN,
     PILOTO,
-    CAPITAN
+    COMERCIANTE
 }

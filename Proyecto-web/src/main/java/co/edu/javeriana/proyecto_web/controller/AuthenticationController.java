@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import co.edu.javeriana.proyecto_web.dto.JwtAuthenticationResponse;
 import co.edu.javeriana.proyecto_web.dto.LoginDTO;
-import co.edu.javeriana.proyecto_web.dto.UserRegistrationDTO;
 import co.edu.javeriana.proyecto_web.service.AuthenticationService;
 
 @RestController
@@ -18,11 +17,6 @@ public class AuthenticationController {
 
     @Autowired
     private AuthenticationService authenticationService;
-
-    @PostMapping("/signup")
-    public ResponseEntity<JwtAuthenticationResponse> signup(@RequestBody UserRegistrationDTO request) {
-        return ResponseEntity.ok(authenticationService.signup(request));
-    }
 
     @PostMapping("/login")
     public ResponseEntity<JwtAuthenticationResponse> login(@RequestBody LoginDTO request) {

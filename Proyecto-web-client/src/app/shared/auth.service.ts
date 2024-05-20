@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 import { environment } from '../environments/environment.development';
 
 const JWT_TOKEN = "jwt-token";
-const EMAIL = "user-email";
+const USER = "user";
 const ROLE = "user-role";
 
 @Injectable({
@@ -22,7 +22,7 @@ export class AuthService {
         // Importante: https://stackoverflow.com/questions/27067251/where-to-store-jwt-in-browser-how-to-protect-against-csrf
         if (this.isBrowser()) {
           sessionStorage.setItem(JWT_TOKEN, jwt.token);
-          sessionStorage.setItem(EMAIL, jwt.email);
+          sessionStorage.setItem(USER, jwt.user);
           sessionStorage.setItem(ROLE, jwt.role);
         }
         return jwt;
@@ -32,7 +32,7 @@ export class AuthService {
   logout() {
     if (this.isBrowser()) {
       sessionStorage.removeItem(JWT_TOKEN);
-      sessionStorage.removeItem(EMAIL);
+      sessionStorage.removeItem(USER);
       sessionStorage.removeItem(ROLE);
     }
   }

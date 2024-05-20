@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import co.edu.javeriana.proyecto_web.service.JwtService;
-import co.edu.javeriana.proyecto_web.service.UserService;
+import co.edu.javeriana.proyecto_web.service.TripulanteService;
 import io.jsonwebtoken.security.SignatureException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -31,7 +31,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Autowired
     private JwtService jwtService;
     @Autowired
-    private UserService userService;
+    private TripulanteService tripulanteService;
 
     @Override
     protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response,
@@ -40,17 +40,17 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         try {
             final String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
             final String jwt;
-            final String userEmail;
+            final String user;
             if (StringUtils.isEmpty(authHeader) || !StringUtils.startsWith(authHeader, "Bearer ")) {
                 filterChain.doFilter(request, response);
                 return;
             }
             jwt = authHeader.substring(7);
-            userEmail = jwtService.extractUserName(jwt);
-            if (StringUtils.isNotEmpty(userEmail)
+            user = jwtService.extractUserName(jwt);
+            if (StringUtils.isNotEmpty(user)
                     && SecurityContextHolder.getContext().getAuthentication() == null) {
-                UserDetails userDetails = userService.userDetailsService()
-                        .loadUserByUsername(userEmail);
+                UserDetails userDetails = tripulanteService.userDetailsService()
+                        .loadUserByUsername(user);
                 if (jwtService.isTokenValid(jwt, userDetails)) {
                     SecurityContext context = SecurityContextHolder.createEmptyContext();
                     UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(

@@ -4,15 +4,15 @@ import co.edu.javeriana.proyecto_web.model.Role;
 
 public class JwtAuthenticationResponse {
     private String token;
-    private String email;
+    private String user;
     private Role role;
 
     public JwtAuthenticationResponse() {
     }
 
-    public JwtAuthenticationResponse(String token, String email, Role role) {
+    public JwtAuthenticationResponse(String token, String user, Role role) {
         this.token = token;
-        this.email = email;
+        this.user = user;
         this.role = role;
     }
 
@@ -24,12 +24,12 @@ public class JwtAuthenticationResponse {
         this.token = token;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUser() {
+        return user;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public Role getRole() {

@@ -1,3 +1,3 @@
 export class LoginDto {
-    constructor(public email: string, public password: string) { }
+    constructor(public user: string, public password: string) { }
 }

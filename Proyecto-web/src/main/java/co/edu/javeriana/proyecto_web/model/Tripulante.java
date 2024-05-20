@@ -1,18 +1,28 @@
 package co.edu.javeriana.proyecto_web.model;
 
 import jakarta.persistence.*;
+
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-public class Tripulante {
+public class Tripulante implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
     private String usuario;
-    private String contrasenia;
-    private String rol;
+    private String password;
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "nave_id")
@@ -22,10 +32,10 @@ public class Tripulante {
     public Tripulante() { 
     }
 
-    public Tripulante(String usuario, String contrasenia, String rol) {
+    public Tripulante( String usuario, String password, Role role) {
         this.usuario = usuario;
-        this.contrasenia = contrasenia;
-        this.rol = rol;
+        this.password = password;
+        this.role = role;
     }
 
     public Long getId() {
@@ -44,20 +54,20 @@ public class Tripulante {
         this.usuario = usuario;
     }
 
-    public String getContrasenia() {
-        return this.contrasenia;
+    public String getPassword() {
+        return this.password;
     }
 
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getRol() {
-        return this.rol;
+    public Role getRole() {
+        return this.role;
     }
 
-    public void setRol(String rol) {
-        this.rol = rol;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public NaveComerciante getNaveT() {
@@ -67,5 +77,35 @@ public class Tripulante {
     public void setNaveT(NaveComerciante naveT) {
         this.naveT = naveT;
     }    
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(role.name()));
+    }
+
+    @Override
+    public String getUsername() {
+        return usuario;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
     
 }

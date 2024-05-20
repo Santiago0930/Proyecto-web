@@ -13,8 +13,6 @@ import jakarta.transaction.Transactional;
 import co.edu.javeriana.proyecto_web.model.Tripulante;
 import co.edu.javeriana.proyecto_web.repository.TripulanteRepository;
 import co.edu.javeriana.proyecto_web.model.Role;
-import co.edu.javeriana.proyecto_web.model.User;
-import co.edu.javeriana.proyecto_web.repository.UserRepository;
 import co.edu.javeriana.proyecto_web.model.Sistema;
 import co.edu.javeriana.proyecto_web.repository.SistemaRepository;
 import co.edu.javeriana.proyecto_web.model.NaveComerciante;
@@ -70,19 +68,12 @@ public class DbInitializer implements CommandLineRunner {
 
     @Autowired
     private AgujeroGusanoRepository agujeroGusanoRepository;
-
-    @Autowired
-    private UserRepository userRepository;
-
     @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Override
     @Transactional
     public void run(String... args) throws Exception {
-        userRepository.save(new User("Alice", "Alisson", "alice@alice.com", passwordEncoder.encode("alice123"), Role.CAPITAN));
-        userRepository.save(new User("Bob", "Bobson", "bob@bob.com", passwordEncoder.encode("bob123"), Role.COMERCIANTE));
-        userRepository.save(new User("Santi", "Guerre", "san@san.com", passwordEncoder.encode("san123"), Role.PILOTO));
         generarEstrellas(400);
         distribuirJugadoresEnEquipos(200, 20);
         generarNaves(20);
@@ -134,15 +125,14 @@ public class DbInitializer implements CommandLineRunner {
         }
     
         List<NaveComerciante> equipos = naveComRepository.findAll();
-        
-        String[] roles = {"Piloto", "Comerciante", "Capitan"}; 
     
         for (int i = 0; i < cantidadJugadores; i++) {
             String usuario = "Usuario" + i;
-            String contrasenia = "Pass" + random.nextInt(9999);
-            String rol = roles[i % 3]; 
+            String contrasenia = "Pass" + i;
+            Role[] roles = Role.values(); 
+            int index = i % roles.length;
     
-            Tripulante tripulante = new Tripulante(usuario, contrasenia, rol);
+            Tripulante tripulante = new Tripulante(usuario, passwordEncoder.encode(contrasenia),  roles[index]);
             if (i != 0 && i % 10 == 0) {
                 id = (id + 1) % equipos.size();
             }
