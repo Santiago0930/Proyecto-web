@@ -20,6 +20,7 @@ export class PlanetaxProductoListComponent {
   bodega: BodegaNave [] = [];
   precioVenta: number [] = []
   precioCompra: number [] = []
+  idEstrella: number = 0
 
   constructor(
     private planetaXproductoService: PlanetaxproductoService, 
@@ -38,6 +39,7 @@ export class PlanetaxProductoListComponent {
     this.planetaXproductoService.precioUnitarioCompra(id).subscribe(precio => this.precioCompra = precio)
     this.planetaXproductoService.precioUnitarioVenta(id).subscribe(precio => this.precioVenta = precio)
     this.productoService.listarProductos().subscribe(producto => this.productos = producto)
+    this.naveService.getIdEstrella().subscribe(ID => this.idEstrella = ID)
    }
 
 }

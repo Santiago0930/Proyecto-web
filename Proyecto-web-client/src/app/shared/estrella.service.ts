@@ -19,6 +19,6 @@ export class EstrellaService {
   )
 
   listarEstrellas(id:number): Observable<Estrella[]> {
-    return this.http.get<Estrella[]>(`${environment.serverUrl}/api/estrella/list/cercanas/${id}`)
+    return this.http.get<Estrella[]>(`${environment.serverUrl}/estrella/list/cercanas/${id}`)
   }
 }

@@ -19,23 +19,23 @@ export class PlanetaxproductoService {
   )
 
   listarPxP(id:number): Observable<PlanetaXProducto[]> {
-    return this.http.get<PlanetaXProducto[]>(`${environment.serverUrl}/api/PxP/list/${id}`)
+    return this.http.get<PlanetaXProducto[]>(`${environment.serverUrl}/PxP/list/${id}`)
   }
 
   precioUnitarioVenta(id:number): Observable<number[]> {
-    return this.http.get<number[]>(`${environment.serverUrl}/api/PxP/listpreciov/${id}`)
+    return this.http.get<number[]>(`${environment.serverUrl}/PxP/listpreciov/${id}`)
   }
 
   precioUnitarioCompra(id:number): Observable<number[]> {
-    return this.http.get<number[]>(`${environment.serverUrl}/api/PxP/listprecioc/${id}`)
+    return this.http.get<number[]>(`${environment.serverUrl}/PxP/listprecioc/${id}`)
   }
 
   obtenerPxP(idPlaneta:number, idProducto:number): Observable<PlanetaXProducto>{
-    return this.http.get<PlanetaXProducto>(`${environment.serverUrl}/api/PxP/${idPlaneta}/${idProducto}`)
+    return this.http.get<PlanetaXProducto>(`${environment.serverUrl}/PxP/${idPlaneta}/${idProducto}`)
   }
 
   modificarStock(stockNuevo: number, idPlaneta: number, idProducto: number){
-    const url = `${environment.serverUrl}/api/PxP/modificar/${idPlaneta}/${idProducto}`;
+    const url = `${environment.serverUrl}/PxP/modificar/${idPlaneta}/${idProducto}`;
     return this.http.patch(url, stockNuevo, { headers: this.headers });
   }
 }

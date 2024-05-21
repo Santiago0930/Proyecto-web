@@ -18,6 +18,9 @@ public interface NaveComRepository extends JpaRepository<NaveComerciante, Long> 
     @Query("SELECT n.dinero FROM NaveComerciante n WHERE n.tipoNave.id = :naveId")
     int obtenerDinero(@Param("naveId") Long naveId);
 
+    @Query("SELECT n.tipoNave.id FROM NaveComerciante n WHERE n.id = :naveId")
+    Long obtenerIdTipoNave(@Param("naveId") Long naveId);
+
     @Transactional
     @Modifying
     @Query("UPDATE NaveComerciante p SET p.dinero = :dinero WHERE p.id = :naveId")

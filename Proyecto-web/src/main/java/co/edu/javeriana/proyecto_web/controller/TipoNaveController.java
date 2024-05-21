@@ -19,14 +19,14 @@ public class TipoNaveController {
     @Autowired
     private TipoNaveService naveService;
 
-    @Secured({ "CAPITAN" })
+    @Secured({ "COMERCIANTE"})
     @GetMapping("/list")
     @Transactional
     public List<TipoNave> listarNaves() {
         return naveService.listarTipos();
     }
 
-    @Secured({ "CAPITAN" })
+    @Secured({ "COMERCIANTE", "PILOTO", "CAPITAN"})
     @GetMapping("/{idNave}")
     @Transactional
     public TipoNave recuperarNave(@PathVariable Long idNave) {

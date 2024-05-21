@@ -1,4 +1,5 @@
-<div>
+<div style="position: relative;">
+    <button style="position: absolute; top: 10px; left: 10px;" [routerLink]="['/tipoNave/view/', idTipoNave]">Volver</button>
     <h2>Lista de estrellas mas cercanas</h2>
     <h3>Selecciona una estrella a la cual quieras viajar</h3>
     <table>
@@ -19,7 +20,7 @@
                 <td>{{estrella.y}}</td>
                 <td>{{estrella.z}}</td>
                 <td>{{estrella.estado ? 'Habitado': 'No habitado'}}</td>
-                <td><button (click)="actualizarTiempoYcoordenadas(estrella)" [routerLink]=getRouterLink(estrella)>Viajar</button></td>
+                <td><button (click)="actualizarTiempoYcoordenadas(estrella)">Viajar</button></td>
             </tr>
         </tbody>
     </table>

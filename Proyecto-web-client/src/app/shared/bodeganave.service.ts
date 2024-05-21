@@ -19,15 +19,15 @@ export class BodeganaveService {
   )
   
   listarStocks(id:number): Observable<BodegaNave[]> {
-    return this.http.get<BodegaNave[]>(`${environment.serverUrl}/api/bodeganave/list/${id}`)
+    return this.http.get<BodegaNave[]>(`${environment.serverUrl}/bodeganave/list/${id}`)
   }
 
   obtenerStock(idNave:number, idProducto:number): Observable<BodegaNave>{
-    return this.http.get<BodegaNave>(`${environment.serverUrl}/api/bodeganave/${idNave}/${idProducto}`)
+    return this.http.get<BodegaNave>(`${environment.serverUrl}/bodeganave/${idNave}/${idProducto}`)
   }
 
   modificarStock(stockNuevo: number, idNave:number, idProducto:number){
-    return this.http.patch(`${environment.serverUrl}/api/bodeganave/modificar/${idNave}/${idProducto}`, stockNuevo , { headers: this.headers }) 
+    return this.http.patch(`${environment.serverUrl}/bodeganave/modificar/${idNave}/${idProducto}`, stockNuevo , { headers: this.headers }) 
   }
 
 }

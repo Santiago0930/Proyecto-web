@@ -11,6 +11,8 @@ import { Observable, BehaviorSubject} from 'rxjs';
 export class TipoNaveService {
 
   private idNave = new BehaviorSubject<number>(0);
+  private idTipoNave = new BehaviorSubject<number>(0);
+  private idEstrella = new BehaviorSubject<number>(0);
 
   constructor(
     private http: HttpClient
@@ -29,32 +31,36 @@ export class TipoNaveService {
     return this.http.get<TipoNave>(`${environment.serverUrl}/tipoNave/${id}`)
   }
 
+  obtenerIdTipoNave(id: number): Observable<number>{
+    return this.http.get<number>(`${environment.serverUrl}/nave/obtenerTipo/${id}`)
+  }
+
   buscarNave(id: number): Observable<Nave> {
-    return this.http.get<Nave>(`${environment.serverUrl}/api/nave/${id}`)
+    return this.http.get<Nave>(`${environment.serverUrl}/nave/${id}`)
   }
 
   obtenerDinero(id: number): Observable<number>{
-    return this.http.get<number>(`${environment.serverUrl}/api/nave/dinero/${id}`)
+    return this.http.get<number>(`${environment.serverUrl}/nave/dinero/${id}`)
   }
 
   modificarDinero(id:number,dineroNuevo: number){
-    return this.http.patch(`${environment.serverUrl}/api/nave/modificar/${id}`, dineroNuevo, { headers: this.headers })
+    return this.http.patch(`${environment.serverUrl}/nave/modificar/${id}`, dineroNuevo, { headers: this.headers })
   }
 
   actualizarTiempo(id:number,tiempoNuevo: number){
-    return this.http.patch(`${environment.serverUrl}/api/nave/actualizar/${id}`, tiempoNuevo, { headers: this.headers })
+    return this.http.patch(`${environment.serverUrl}/nave/actualizar/${id}`, tiempoNuevo, { headers: this.headers })
   }
 
   actualizarX(id:number,x: number){
-    return this.http.patch(`${environment.serverUrl}/api/nave/actualizarx/${id}`, x, { headers: this.headers })
+    return this.http.patch(`${environment.serverUrl}/nave/actualizarx/${id}`, x, { headers: this.headers })
   }
 
   actualizarY(id:number,y: number){
-    return this.http.patch(`${environment.serverUrl}/api/nave/actualizary/${id}`, y, { headers: this.headers })
+    return this.http.patch(`${environment.serverUrl}/nave/actualizary/${id}`, y, { headers: this.headers })
   }
 
   actualizarZ(id:number,z: number){
-    return this.http.patch(`${environment.serverUrl}/api/nave/actualizarz/${id}`, z, { headers: this.headers })
+    return this.http.patch(`${environment.serverUrl}/nave/actualizarz/${id}`, z, { headers: this.headers })
   }
 
   setIdNave(value: number) {
@@ -63,6 +69,22 @@ export class TipoNaveService {
 
   getIdNave() {
     return this.idNave.asObservable();
+  }
+
+  setIdEstrella(value: number) {
+    this.idEstrella.next(value);
+  }
+
+  getIdEstrella() {
+    return this.idEstrella.asObservable();
+  }
+
+  setIdTipoNave(value: number) {
+    this.idTipoNave.next(value);
+  }
+
+  getIdTipoNave() {
+    return this.idTipoNave.asObservable();
   }
 
 }

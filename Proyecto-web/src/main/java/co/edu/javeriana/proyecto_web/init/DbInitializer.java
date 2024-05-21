@@ -291,7 +291,7 @@ public class DbInitializer implements CommandLineRunner {
 
     private void generarTiempoPartida() {
         Random rand = new Random();
-        Long tiempo = rand.nextLong(1000);
+        Long tiempo = rand.nextLong(100000);
         Sistema sistema = new Sistema(tiempo);
         sistemaRepository.save(sistema);
     }

@@ -37,6 +37,7 @@ export class ProductoListComponent {
   idProducto: number= 0
   dinero : number = 0
   vol : number = 0
+  idEstrella: number = 0
 
   constructor(
     private productoService: ProductoService,
@@ -59,6 +60,7 @@ export class ProductoListComponent {
     this.cargaService.getCarga().subscribe(car => this.vol = car)
     this.bodegaService.obtenerStock(this.idNave, id).subscribe(Stock => this.bodega = Stock)
     this.naveService.obtenerDinero(this.idNave).subscribe(Dinero => this.dinero = Dinero)
+    this.naveService.getIdEstrella().subscribe(ide => this.idEstrella = ide)
    }
 
    asignarPrecio(FO: number, FD: number, stock:number){

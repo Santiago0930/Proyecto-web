@@ -15,7 +15,7 @@ public class SistemaController {
     @Autowired
     private SistemaService sistemaService;
 
-    @Secured({ "CAPITAN" })
+    @Secured({ "COMERCIANTE", "CAPITAN", "PILOTO" })
     @GetMapping("/obtener")
     @Transactional
     public Long obtenerTiempo() {

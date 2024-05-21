@@ -13,6 +13,7 @@ import { ProductoListComponent } from './producto/producto-list/producto-list.co
 import { BodeganaveListComponent } from './bodeganave/bodeganave-list/bodeganave-list.component';
 import { LoginComponent } from './security/login/login.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { TiponaveViewComComponent } from './tiponave/tiponave-view-com/tiponave-view-com.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     ProductoListComponent,
     BodeganaveListComponent,
     LoginComponent,
+    TiponaveViewComComponent,
   ],
   imports: [
     BrowserModule,

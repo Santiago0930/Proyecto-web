@@ -19,10 +19,10 @@ export class ProductoService {
   )
 
   listarProductos(): Observable<Producto[]> {
-    return this.http.get<Producto[]>(`${environment.serverUrl}/api/producto/list`)
+    return this.http.get<Producto[]>(`${environment.serverUrl}/producto/list`)
   }
 
   obtenerProducto(id: number): Observable<Producto> {
-    return this.http.get<Producto>(`${environment.serverUrl}/api/producto/${id}`)
+    return this.http.get<Producto>(`${environment.serverUrl}/producto/${id}`)
   }
 }

@@ -21,11 +21,11 @@ export class PlanetaService {
   )
 
   listarPlanetas(id:number): Observable<Planeta[]> {
-    return this.http.get<Planeta[]>(`${environment.serverUrl}/api/planeta/list/${id}`)
+    return this.http.get<Planeta[]>(`${environment.serverUrl}/planeta/list/${id}`)
   }
 
   obtenerPlaneta(id: number): Observable<Planeta> {
-    return this.http.get<Planeta>(`${environment.serverUrl}/api/planeta/${id}`)
+    return this.http.get<Planeta>(`${environment.serverUrl}/planeta/${id}`)
   }
 
   setIdPlaneta(value: number) {

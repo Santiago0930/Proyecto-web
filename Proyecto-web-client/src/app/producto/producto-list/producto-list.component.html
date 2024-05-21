@@ -1,4 +1,5 @@
-<div>
+<div style="position: relative;">
+    <button style="position: absolute; top: 10px; left: 10px;" [routerLink]="['/PxP/list/', planeta.id]">Volver</button>
     <h2>Informacion Producto</h2>
     <ul>
         <li>Nombre Producto: {{producto.nombre}}</li>
@@ -18,8 +19,8 @@
     <div *ngIf="isVisible">
         <h2>Precios totales</h2>
         <ul>
-            <li>Precio total compra: {{precioFinalCompra}} <button (click)="actualizarDatosCompra(producto.volumen)" [routerLink]="['/tipoNave/view', idNave]">Comprar</button></li>
-            <li>Precio total venta: {{precioFinalVenta}} <button (click)="actualizarDatosVenta(producto.volumen)" [routerLink]="['/tipoNave/view', idNave]">Vender</button></li>
+            <li>Precio total compra: {{precioFinalCompra}} <button (click)="actualizarDatosCompra(producto.volumen)" [routerLink]="['/planeta/list', idEstrella]">Comprar</button></li>
+            <li>Precio total venta: {{precioFinalVenta}} <button (click)="actualizarDatosVenta(producto.volumen)" [routerLink]="['/planeta/list', idEstrella]">Vender</button></li>
         </ul>
     </div>
 </div>

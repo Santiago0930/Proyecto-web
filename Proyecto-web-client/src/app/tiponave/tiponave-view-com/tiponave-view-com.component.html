@@ -1,0 +1,31 @@
+<div>
+    <button [routerLink]="['/login']">LogOut</button>
+    <h2>Información de la nave</h2>
+    <ul>
+        <li>Nombre nave: {{tipoNave.nombre}}</li>
+        <li>Capacidad Bodega: {{tipoNave.bodega}}</li>
+        <li>Velocidad Máxima: {{tipoNave.velocidad}}</li>
+        <li>Coordenada x: {{nave.x}}</li>
+        <li>Coordenada y: {{nave.y}}</li>
+        <li>Coordenada z: {{nave.z}}</li>
+        <li>Dinero actual: {{dinero}}</li>
+        <li>Tiempo actual: {{nave.tiempo}}</li>
+        <li>Carga actual: {{carga}}</li>
+        <li>Tiempo de juego: {{tiempo}}</li>
+    </ul>
+    <button 
+    (click)="obtenerIdEstrella()"
+    [disabled]="nave.tiempo >= tiempo || carga >= tipoNave.bodega || dinero === 0"
+    class="link-button">
+    Comerciar
+  </button>
+    <div *ngIf="nave.tiempo >= tiempo">
+        <h2>El tiempo de juego ha finalizado.</h2>
+    </div>
+    <div *ngIf="carga >= tipoNave.bodega">
+        <h2>La capacidad de la bodega ha sido alcanzada, juego finalizado.</h2>
+    </div>
+    <div *ngIf="dinero === 0">
+        <h2>No tienes dinero, el juego a finalizado.</h2>
+    </div>
+</div>

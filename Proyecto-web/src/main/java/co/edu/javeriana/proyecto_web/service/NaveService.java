@@ -47,4 +47,9 @@ public class NaveService {
         return naveRepository.actualizarZ(idNave, z);
     }
 
+    @Transactional
+    public Long obtenerIdTipoNave(Long id){
+        return naveRepository.obtenerIdTipoNave(id);
+    }
+
 }
