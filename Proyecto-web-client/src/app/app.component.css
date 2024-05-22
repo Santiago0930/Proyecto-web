@@ -1,23 +1,97 @@
-/* Estilo general del componente */
+/* Fondo espacial */
 :host {
-    display: block;
-    text-align: center;
-  }
-  
-  /* Estilo del título */
-  h1 {
-    font-size: 32px;
-    margin-bottom: 20px;
-  }
-  
-  /* Estilo del contenido dentro del componente */
-  div {
-    margin: 0 auto;
-    max-width: 800px;
-  }
-  
-  /* Estilo de los elementos anidados */
-  router-outlet {
-    margin-top: 20px;
-  }
-  
+  display: block;
+  text-align: center;
+  background-image: url('https://images.unsplash.com/photo-1581937019650-bb34507b7d64?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  color: white;
+  min-height: 100vh;
+  overflow: auto;
+}
+ 
+/* Estilo del título */
+h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+ 
+/* Estilo del contenido dentro del componente */
+div {
+  margin: 0 auto;
+  max-width: 800px;
+}
+ 
+/* Estilo de los elementos anidados */
+router-outlet {
+  margin-top: 20px;
+}
+ 
+/* Estilo de los títulos */
+h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+ 
+/* Estilo del campo de entrada numérica */
+input[type="number"] {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.8); /* Para que sea más visible sobre el fondo */
+  color: black; /* Texto del input */
+}
+ 
+/* Estilo del botón */
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+ 
+/* Estilo del botón al pasar el ratón por encima */
+button:hover {
+  background-color: #0056b3;
+}
+ 
+/* Estilo de la tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo semitransparente para mejorar la legibilidad */
+}
+ 
+/* Estilo de las celdas de la tabla */
+td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  color: white;
+}
+ 
+/* Estilo de los botones de selección */
+button[routerLink] {
+  background-color: #28a745;
+}
+ 
+/* Estilo de los botones de selección al pasar el ratón por encima */
+button[routerLink]:hover {
+  background-color: #218838;
+}
+ 
+/* Estilo del botón de actualización */
+button[type="submit"] {
+  background-color: #17a2b8;
+}
+ 
+/* Estilo del botón de actualización al pasar el ratón por encima */
+button[type="submit"]:hover {
+  background-color: #138496;
+}

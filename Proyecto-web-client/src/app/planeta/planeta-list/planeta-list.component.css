@@ -1,49 +1,53 @@
-/* Estilo general del componente */
-:host {
-    display: block;
-    margin: 20px;
-  }
-  
-  /* Estilo del título */
-  h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  /* Estilo de la tabla */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  /* Estilo de las celdas de encabezado */
-  th {
-    border: 1px solid #ccc;
-    padding: 8px;
-    text-align: left;
-    background-color: #f2f2f2;
-  }
-  
-  /* Estilo de las celdas de datos */
-  td {
-    border: 1px solid #ccc;
-    padding: 8px;
-    text-align: left;
-  }
-  
-  /* Estilo de los botones */
-  button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  /* Estilo de los botones al pasar el ratón por encima */
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  
+.space-game-container {
+  display: block;
+  text-align: center;
+  background-image: url('https://images.unsplash.com/photo-1533113354171-490d836238e3?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  color: white;
+  min-height: 100vh;
+  overflow: auto;
+  padding: 20px;
+}
+ 
+h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+ 
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+ 
+td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  color: white;
+}
+ 
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+ 
+button:hover {
+  background-color: #0056b3;
+}
+ 
+button[routerLink] {
+  background-color: #28a745;
+}
+ 
+button[routerLink]:hover {
+  background-color: #218838;
+}

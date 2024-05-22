@@ -1,3 +1,14 @@
+.space-game-container {
+  display: block;
+  margin: 20px;
+  background-image: url('https://images.unsplash.com/photo-1533113354171-490d836238e3?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  color: white; /* Cambio de color de texto a blanco para mayor contraste */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
 /* Estilo general del componente */
 :host {
     display: block;
