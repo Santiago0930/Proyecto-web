@@ -11,7 +11,7 @@
         <tbody>
             <tr *ngFor="let planeta of planetas">
                 <td>{{planeta.nombre}}</td>
-                <td><button (click)="actualizarIdPlaneta(planeta.id)" [routerLink]="['/PxP/list/',planeta.id]">Comerciar</button></td>
+                <td><button (click)="actualizarIdPlaneta(planeta.id)" [routerLink]="['/PxP/list/',planeta.id] " id = "btnComerciar">Comerciar</button></td>
             </tr>
         </tbody>
     </table>

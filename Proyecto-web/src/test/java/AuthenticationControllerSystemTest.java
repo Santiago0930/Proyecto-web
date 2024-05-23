@@ -113,7 +113,7 @@ public class AuthenticationControllerSystemTest {
     }
 
     @Test
-    void Comerciar(){
+    void verEstrellas(){
         driver.get(baseUrl + "/login");
         WebElement usuario = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("txtUsuario")));
         usuario.clear();
@@ -129,7 +129,11 @@ public class AuthenticationControllerSystemTest {
         driver.get(baseUrl + "/estrella/list/cercanas/1");
         /*WebElement btnViajar = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("btnViajar")));
         btnViajar.click();
-        driver.get(baseUrl + "/planeta/list/1");*/
+        driver.get(baseUrl + "/planeta/list/1");
+        WebElement btnComerciar = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("btnComerciar")));
+        btnComerciar.click();
+        driver.get(baseUrl + "/PxP/list/1");*/
+
 }
 
     //****************INICIALIZACION DATOS******************
@@ -138,14 +142,17 @@ public class AuthenticationControllerSystemTest {
         List<Estrella> estrellas = new ArrayList<>();
         Random rand = new Random();
         for (int i = 0; i < cantidad; i++) {
-            double x = rand.nextDouble() * 300;
+            double x = rand.nextDouble() * 300; 
             double y = rand.nextDouble() * 300;
             double z = rand.nextDouble() * 300;
             String nombre = "Estrella " + i;
-            boolean habitada = true;
+            boolean habitada = false;
 
+            if (rand.nextDouble() < 0.4) {
+                habitada = true;
+            }
             Estrella estrella = new Estrella(x, y, z, nombre, habitada);
-            if (habitada) {
+            if(habitada){
                 int numPlanetas = rand.nextInt(3) + 1;
                 for (int j = 0; j < numPlanetas; j++) {
                     Planeta planeta = new Planeta("Planeta " + j + " de " + nombre);
@@ -157,11 +164,12 @@ public class AuthenticationControllerSystemTest {
         }
         estrellaRepository.saveAll(estrellas);
     }
+    
 
     private void distribuirJugadoresEnEquipos(int cantidadJugadores, int cantidadEquipos) {
         int id = 0;
         Random random = new Random();
-
+    
         for (int i = 0; i < cantidadEquipos; i++) {
             double x = random.nextDouble() * 300;
             double y = random.nextDouble() * 300;
@@ -170,16 +178,16 @@ public class AuthenticationControllerSystemTest {
             NaveComerciante equipo = new NaveComerciante(x, y, z, dinero, 0);
             naveComRepository.save(equipo);
         }
-
+    
         List<NaveComerciante> equipos = naveComRepository.findAll();
-
+    
         for (int i = 0; i < cantidadJugadores; i++) {
             String usuario = "Usuario" + i;
             String contrasenia = "Pass" + i;
-            Role[] roles = Role.values();
+            Role[] roles = Role.values(); 
             int index = i % roles.length;
-
-            Tripulante tripulante = new Tripulante(usuario, passwordEncoder.encode(contrasenia), roles[index]);
+    
+            Tripulante tripulante = new Tripulante(usuario, passwordEncoder.encode(contrasenia),  roles[index]);
             if (i != 0 && i % 10 == 0) {
                 id = (id + 1) % equipos.size();
             }
@@ -187,9 +195,10 @@ public class AuthenticationControllerSystemTest {
             tripulanteRepository.save(tripulante);
         }
 
+        
     }
-
-    private void generarNaves(int cantidadNaves) {
+    
+    private void generarNaves(int cantidadNaves){
         double minv = 300.0;
         double maxv = 1000.0;
         double minb = 500.0;
@@ -199,45 +208,44 @@ public class AuthenticationControllerSystemTest {
         for (int i = 0; i < cantidadNaves; i++) {
             double bodega = minb + (rand.nextDouble() * (maxb - minb));
             double velocidad = minv + (rand.nextDouble() * (maxv - minv));
-            TipoNave tipoNave = new TipoNave("Nave " + i, bodega, velocidad);
+            TipoNave tipoNave = new TipoNave("Nave " + i , bodega, velocidad);
             tipoNaveRepository.save(tipoNave);
         }
 
         List<TipoNave> naves = tipoNaveRepository.findAll();
         List<NaveComerciante> equipos = naveComRepository.findAll();
 
-        // Collections.shuffle(naves);
+        //Collections.shuffle(naves); 
         for (int i = 0; i < equipos.size(); i++) {
-            equipos.get(i).setTipoNave(naves.get(i));
+            equipos.get(i).setTipoNave(naves.get(i)); 
         }
         naveComRepository.saveAll(equipos);
     }
 
-    private void generarEspecificacionesProductos(int cantidadProductos) {
+    private void generarEspecificacionesProductos(int cantidadProductos){
         Random random = new Random();
         for (int i = 0; i < cantidadProductos; i++) {
             String nombre = "Producto " + i;
-            Double volumen = 0.5 + (100.0 - 0.5) * random.nextDouble();
+            Double volumen = 0.5 + (100.0 - 0.5) * random.nextDouble(); 
             Producto producto = new Producto(nombre, volumen);
             productoRepository.save(producto);
-        }
+        }  
 
         List<Producto> productos = productoRepository.findAll();
         List<NaveComerciante> equipos = naveComRepository.findAll();
         List<Planeta> planetas = planetaRepository.findAll();
 
-        for (int i = 0; i < planetas.size(); i++) {
-            for (int j = 0; j < productos.size(); j++) {
-                PlanetaXProducto PxP = new PlanetaXProducto(random.nextInt(1000000), random.nextInt(1000000),
-                        random.nextInt(1000000));
+        for (int i = 0; i < planetas.size(); i++){
+            for (int j = 0; j < productos.size(); j++){
+            PlanetaXProducto PxP = new PlanetaXProducto(random.nextInt(1000000),random.nextInt(1000000),random.nextInt(1000000));
                 PxP.setPlaneta(planetas.get(i));
                 PxP.setProducto(productos.get(j));
                 planetaXProductoRepository.save(PxP);
             }
         }
 
-        for (int i = 0; i < equipos.size(); i++) {
-            for (int j = 0; j < productos.size(); j++) {
+        for (int i = 0; i < equipos.size(); i++){
+            for (int j = 0; j < productos.size(); j++){
                 BodegaNave bodega = new BodegaNave(random.nextInt(1000000));
                 bodega.setNaveB(equipos.get(i));
                 bodega.setProductoB(productos.get(j));
@@ -246,13 +254,13 @@ public class AuthenticationControllerSystemTest {
         }
     }
 
-    private void generarRelacionNaveXEstrella() {
+    private void generarRelacionNaveXEstrella(){
         List<NaveComerciante> equipos = naveComRepository.findAll();
         List<Estrella> estrellas = estrellaRepository.findAll();
-        for (int i = 0; i < equipos.size(); i++) {
+        for(int i = 0; i<equipos.size(); i++){
             equipos.get(i).setEstrellas(estrellas);
         }
-        for (int i = 0; i < estrellas.size(); i++) {
+        for(int i = 0; i<estrellas.size(); i++){
             estrellas.get(i).setNaves(equipos);
         }
         naveComRepository.saveAll(equipos);
@@ -270,14 +278,13 @@ public class AuthenticationControllerSystemTest {
         conectarEstrellasHabitadas(habitadas, agujerosDeGusano, rand, conexionesExistentes);
 
         // Opcional: agregar más agujeros de gusano aleatorios
-        int cantidadAgujerosAdicionales = (int) (estrellas.size() * 0.3); // Ejemplo: 30% de las estrellas
+        int cantidadAgujerosAdicionales = (int) (estrellas.size() * 0.3);  // Ejemplo: 30% de las estrellas
         for (int i = 0; i < cantidadAgujerosAdicionales; i++) {
             Estrella origen = estrellas.get(rand.nextInt(estrellas.size()));
             Estrella destino;
             do {
                 destino = estrellas.get(rand.nextInt(estrellas.size()));
-            } while (destino == origen
-                    || conexionesExistentes.contains(new ImmutablePair<>(origen.getId(), destino.getId())));
+            } while (destino == origen || conexionesExistentes.contains(new ImmutablePair<>(origen.getId(), destino.getId())));
 
             double tiempoViaje = 1 + (10 - 1) * rand.nextDouble(); // Ejemplo de tiempo de viaje
             AgujeroGusano agujero = new AgujeroGusano();
@@ -290,24 +297,20 @@ public class AuthenticationControllerSystemTest {
             agujero1.setTiempoViaje(tiempoViaje);
             agujerosDeGusano.add(agujero);
             agujerosDeGusano.add(agujero1);
-            conexionesExistentes.add(new ImmutablePair<>(origen.getId(), destino.getId())); // Añadir a las
-                                                                                            // conexiones
-                                                                                            // existentes
+            conexionesExistentes.add(new ImmutablePair<>(origen.getId(), destino.getId())); // Añadir a las conexiones existentes
             conexionesExistentes.add(new ImmutablePair<>(destino.getId(), origen.getId()));
         }
 
         agujeroGusanoRepository.saveAll(agujerosDeGusano);
     }
 
-    private void conectarEstrellasHabitadas(List<Estrella> habitadas, List<AgujeroGusano> agujeros, Random rand,
-            Set<Pair<Long, Long>> conexionesExistentes) {
+    private void conectarEstrellasHabitadas(List<Estrella> habitadas, List<AgujeroGusano> agujeros, Random rand, Set<Pair<Long, Long>> conexionesExistentes) {
         Collections.shuffle(habitadas); // Mezclar para randomizar las conexiones
         for (int i = 0; i < habitadas.size() - 1; i++) {
             Estrella origen = habitadas.get(i);
             Estrella destino = habitadas.get(i + 1);
             if (!conexionesExistentes.contains(new ImmutablePair<>(origen.getId(), destino.getId()))) {
-                double tiempoViaje = 1 + (5 - 1) * rand.nextDouble(); // Tiempo de viaje más corto para estrellas
-                                                                      // habitadas
+                double tiempoViaje = 1 + (5 - 1) * rand.nextDouble(); // Tiempo de viaje más corto para estrellas habitadas
                 AgujeroGusano agujero = new AgujeroGusano();
                 agujero.setEstrellaOrigen(origen);
                 agujero.setEstrellaDestino(destino);
@@ -318,9 +321,7 @@ public class AuthenticationControllerSystemTest {
                 agujero1.setTiempoViaje(tiempoViaje);
                 agujeros.add(agujero);
                 agujeros.add(agujero1);
-                conexionesExistentes.add(new ImmutablePair<>(origen.getId(), destino.getId())); // Añadir a las
-                                                                                                // conexiones
-                                                                                                // existentes
+                conexionesExistentes.add(new ImmutablePair<>(origen.getId(), destino.getId())); // Añadir a las conexiones existentes
                 conexionesExistentes.add(new ImmutablePair<>(destino.getId(), origen.getId()));
             }
         }
