@@ -33,4 +33,11 @@ public class TipoNaveController {
         return naveService.recuperarTipoNave(idNave);
     }
 
+    @Secured({ "COMERCIANTE", "CAPITAN"})
+    @GetMapping("/carga/{idNave}")
+    @Transactional
+    public Double obtenerCarga(@PathVariable Long idNave) {
+        return naveService.obtenerCarga(idNave);
+    }
+
 }

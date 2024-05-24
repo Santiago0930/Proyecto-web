@@ -27,6 +27,10 @@ export class TipoNaveService {
     return this.http.get<TipoNave[]>(`${environment.serverUrl}/tipoNave/list`)
   }
 
+  obtenerCarga(id: number): Observable<number> {
+    return this.http.get<number>(`${environment.serverUrl}/tipoNave/carga/${id}`)
+  }
+
   buscarTipoNave(id: number): Observable<TipoNave> {
     return this.http.get<TipoNave>(`${environment.serverUrl}/tipoNave/${id}`)
   }

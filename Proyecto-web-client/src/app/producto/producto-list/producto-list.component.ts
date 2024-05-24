@@ -41,6 +41,7 @@ export class ProductoListComponent {
   vol: number = 0
   idEstrella: number = 0
   rol: String = ''
+  cargaNave: number = 0
 
   constructor(
     private productoService: ProductoService,
@@ -59,7 +60,7 @@ export class ProductoListComponent {
     this.idProducto = id
     this.productoService.obtenerProducto(id).subscribe(productos => this.producto = productos)
     this.planetaService.getIdPlaneta().subscribe(idp => { this.idPlaneta = idp; this.planetaService.obtenerPlaneta(this.idPlaneta).subscribe(idp => this.planeta = idp); this.PxPService.obtenerPxP(this.idPlaneta, id).subscribe(pxp => this.PxP = pxp) })
-    this.naveService.getIdNave().subscribe(id => { this.idNave = id; this.bodegaService.obtenerStock(this.idNave, id).subscribe(Stock => this.bodega = Stock); this.naveService.obtenerDinero(this.idNave).subscribe(Dinero => this.dinero = Dinero) })
+    this.naveService.getIdNave().subscribe(id => { this.idNave = id; this.bodegaService.obtenerStock(this.idNave, id).subscribe(Stock => this.bodega = Stock); this.naveService.obtenerDinero(this.idNave).subscribe(Dinero => this.dinero = Dinero); this.naveService.obtenerCarga(this.idNave).subscribe(c => this.cargaNave = c)})
     this.cargaService.getCarga().subscribe(car => this.vol = car)
     this.naveService.getIdEstrella().subscribe(ide => this.idEstrella = ide)
     this.tripulanteService.getRol().subscribe(r => this.rol = r);
@@ -104,7 +105,7 @@ export class ProductoListComponent {
     this.cargaService.setCarga(this.vol)
 
     if (this.rol == "CAPITAN") {
-      if (this.dinero <= 0) {
+      if (this.dinero <= 0 || this.vol > this.cargaNave) {
         this.router.navigate(['/tipoNave/view', this.idNave.toString()]);
       }
       else {
@@ -145,7 +146,7 @@ export class ProductoListComponent {
       });
 
       if (this.rol == "CAPITAN") {
-        if (this.dinero <= 0) {
+        if (this.dinero <= 0 || this.vol > this.cargaNave) {
           this.router.navigate(['/tipoNave/view', this.idNave.toString()]);
         }
         else {
