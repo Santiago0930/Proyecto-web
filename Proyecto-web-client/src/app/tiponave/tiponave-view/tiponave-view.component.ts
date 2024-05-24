@@ -34,7 +34,6 @@ export class TiponaveViewComponent {
 
   actualizarId(newValue: number) {
     this.tipoNaveService.setIdNave(newValue);
-    console.log("Id actualizado: " + this.tipoNaveService.getIdNave());
   }
 
   tipoNave: TipoNave = new TipoNave(0, "", 0.0, 0.0);

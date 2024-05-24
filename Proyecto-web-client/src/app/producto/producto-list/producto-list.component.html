@@ -19,8 +19,8 @@
     <div *ngIf="isVisible">
         <h2>Precios totales</h2>
         <ul>
-            <li>Precio total compra: {{precioFinalCompra}} <button (click)="actualizarDatosCompra(producto.volumen)" [routerLink]="['/planeta/list', idEstrella]">Comprar</button></li>
-            <li>Precio total venta: {{precioFinalVenta}} <button (click)="actualizarDatosVenta(producto.volumen)" [routerLink]="['/planeta/list', idEstrella]">Vender</button></li>
+            <li>Precio total compra: {{precioFinalCompra}} <button (click)="actualizarDatosCompra(producto.volumen)">Comprar</button></li>
+            <li>Precio total venta: {{precioFinalVenta}} <button (click)="actualizarDatosVenta(producto.volumen)">Vender</button></li>
         </ul>
     </div>
 </div>

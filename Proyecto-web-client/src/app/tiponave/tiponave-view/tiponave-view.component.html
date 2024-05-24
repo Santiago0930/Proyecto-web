@@ -16,7 +16,7 @@
     <button 
         (click)="actualizarId(nave.id)"
         [routerLink]="['/estrella/list/cercanas', tipoNave.id]"
-        [disabled]="nave.tiempo >= tiempo || carga >= tipoNave.bodega || dinero === 0"
+        [disabled]="nave.tiempo >= tiempo || carga >= tipoNave.bodega || dinero <=0"
         class="link-button" id = "btnVerEstrellas">Ver estrellas</button>
     <div *ngIf="nave.tiempo >= tiempo">
         <h2>El tiempo de juego ha finalizado.</h2>
@@ -24,7 +24,7 @@
     <div *ngIf="carga >= tipoNave.bodega">
         <h2>La capacidad de la bodega ha sido alcanzada, juego finalizado.</h2>
     </div>
-    <div *ngIf="dinero === 0">
+    <div *ngIf="dinero <= 0">
         <h2>No tienes dinero, el juego a finalizado.</h2>
     </div>
 </div>

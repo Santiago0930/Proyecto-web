@@ -113,7 +113,7 @@ public class AuthenticationControllerSystemTest {
     }
 
     @Test
-    void verEstrellas(){
+    void verEstrellasAutenicado(){
         driver.get(baseUrl + "/login");
         WebElement usuario = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("txtUsuario")));
         usuario.clear();
@@ -127,13 +127,6 @@ public class AuthenticationControllerSystemTest {
         WebElement btnVerEstrellas = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("btnVerEstrellas")));
         btnVerEstrellas.click();
         driver.get(baseUrl + "/estrella/list/cercanas/1");
-        /*WebElement btnViajar = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("btnViajar")));
-        btnViajar.click();
-        driver.get(baseUrl + "/planeta/list/1");
-        WebElement btnComerciar = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("btnComerciar")));
-        btnComerciar.click();
-        driver.get(baseUrl + "/PxP/list/1");*/
-
 }
 
     //****************INICIALIZACION DATOS******************

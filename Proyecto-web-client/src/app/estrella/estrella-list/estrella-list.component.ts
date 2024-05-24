@@ -31,9 +31,8 @@ export class EstrellaListComponent {
   set id(id: number) {
     console.log("id", id)
     this.estrellaService.listarEstrellas(id).subscribe(Estre => this.estrellas = Estre)
-    this.naveService.getIdNave().subscribe(ID => this.idNave = ID)
+    this.naveService.getIdNave().subscribe(ID => {this.idNave = ID;  this.naveService.buscarNave(this.idNave).subscribe(Nave => this.nave = Nave)})
     this.naveService.getIdTipoNave().subscribe(Idn => this.idTipoNave = Idn)
-    this.naveService.buscarNave(this.idNave).subscribe(Nave => this.nave = Nave)
     this.tripulanteService.getRol().subscribe(r => this.rol = r);
   }
 
